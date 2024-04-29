@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: quiz_system_cluster
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Q7mP$2c<dd1<%99y].Z622>D'
+      MYSQL_DATABASE: quiz_system
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 'Q7mP$2c<dd1<%99y].Z622>D'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  adminer:
+    image: adminer
+    container_name: adminer_db_ui
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:
